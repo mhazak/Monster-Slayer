@@ -7,7 +7,8 @@ const app = Vue.createApp({
         return {
             playerHealth: 100,
             monsterHealth: 100,
-            currentRound: 0
+            currentRound: 0,
+            winner: null
         }
     },
     computed: {
@@ -34,7 +35,7 @@ const app = Vue.createApp({
         attackPlayer() {
             const damage = randomVal(8, 15);
             this.playerHealth -= damage;
-            console.log({player: this.playerHealth, monster: this.monsterHealth});
+            this.getResult();
         },
         
         specialAttackMonster() {
@@ -53,6 +54,27 @@ const app = Vue.createApp({
                 this.playerHealth += heal;
             }
             this.attackPlayer();
+        },
+
+        getResult() {
+        
+            if (this.playerHealth <= 0 || this.monsterHealth <= 0) {
+                if (this.playerHealth <= 0 && this.monsterHealth > 0) {
+                    this.winner = 'Monster wins!';
+                } else if (this.playerHealth > 0 && this.monsterHealth <= 0) {
+                    this.winner = 'Player wins!';
+                } else if (this.playerHealth <= 0 && this.monsterHealth <= 0) {
+                    this.winner = 'Tie!';
+                }
+                gameRunning = false;
+                // this.reset();
+            }
+        },
+
+        reset() {
+            gameRunning = true;
+            this.playerHealth = 100;
+            this.monsterHealth = 100;
         }
     }
 });

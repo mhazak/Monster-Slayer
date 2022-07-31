@@ -33,6 +33,11 @@
         </div>
       </section>
       
+      <section v-if="winner" class="container">
+        <h2>Game Over!</h2>
+        <h3>{{ winner }}</h3>
+
+      </section>
       <section id="controls">
         <button @click="attackMonster">ATTACK</button>
         <button :disabled="specialAttackAvailable" @click="specialAttackMonster">SPECIAL ATTACK</button>
