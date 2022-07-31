@@ -66,7 +66,7 @@ const app = Vue.createApp({
                 if (this.playerHealth <= 0 && this.monsterHealth > 0) {
                     this.winner = 'Monster wins!';
                 } else if (this.playerHealth > 0 && this.monsterHealth <= 0) {
-                    this.winner = 'Player wins!';
+                    this.winner = 'You win!';
                 } else if (this.playerHealth <= 0 && this.monsterHealth <= 0) {
                     this.winner = 'Tie!';
                 }
@@ -78,6 +78,10 @@ const app = Vue.createApp({
             this.currentRound = 0;
             this.playerHealth = 100;
             this.monsterHealth = 100;
+        },
+
+        surrender() {
+            this.winner = 'Monster wins!';
         }
     }
 });
