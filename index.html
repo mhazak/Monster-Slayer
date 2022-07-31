@@ -39,7 +39,7 @@
         <button @click="reset">Start new game</button>
       </section>
       
-      <section id="controls" v-if="!winner">
+      <section v-else id="controls">
         <button @click="attackMonster">ATTACK</button>
         <button :disabled="specialAttackAvailable" @click="specialAttackMonster">SPECIAL ATTACK</button>
         <button @click="healPlayer">HEAL</button>
