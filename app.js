@@ -70,13 +70,12 @@ const app = Vue.createApp({
                 } else if (this.playerHealth <= 0 && this.monsterHealth <= 0) {
                     this.winner = 'Tie!';
                 }
-                gameRunning = false;
-                // this.reset();
             }
         },
 
         reset() {
-            gameRunning = true;
+            this.winner = null;
+            this.currentRound = 0;
             this.playerHealth = 100;
             this.monsterHealth = 100;
         }

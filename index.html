@@ -36,9 +36,10 @@
       <section v-if="winner" class="container">
         <h2>Game Over!</h2>
         <h3>{{ winner }}</h3>
-
+        <button @click="reset">Start new game</button>
       </section>
-      <section id="controls">
+      
+      <section id="controls" v-if="!winner">
         <button @click="attackMonster">ATTACK</button>
         <button :disabled="specialAttackAvailable" @click="specialAttackMonster">SPECIAL ATTACK</button>
         <button @click="healPlayer">HEAL</button>
